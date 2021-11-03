@@ -1,7 +1,7 @@
 # Algorithm
 算法总结
 
-链表
+## 链表
 - 链表是内存不连续,单向链表头结点记录基地，尾部next指向null
 ![image-20210804191853470](https://github.com/zuoming12135/Algorithm/blob/main/Snip20211029_9.png)
 - 链表常见算法题
@@ -135,6 +135,23 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
     return ans;
 }
 ```
+
+## 数组
+数组是一种连续的数据结构，用一组连续的内存空间，来存储一组相同类型的数据。具有**<u>根据下标随机访问</u>**的特性，时间复杂度为O(1)，缺点：数据的删除和插入操作比较耗时
+
+疑问1.为什么数组下标从0开始？
+
+因为性能优化方面考虑的，以访问下标为k为例a[0]标识base_address，数组的下标随机访问，a[k]address = base_address + k * data_type_size;，如果下标从1开始，a[k]address = base_address + (k-1) * data_type_size;，会多一次减法指令运算。数组作为一种非常基础的数据结构要做到性能极致优化。
+
+## 栈
+
+栈是一种先入后出的数据结构。从操作上看是一种操作受限的线性表，只允许从一端插入和删除数据。
+栈的应用
+1.函数调用栈
+每进入一个函数就会将临时变量作为一个栈帧入栈，调用函数完成返回之后，将这个函数的栈帧出栈。
+2.表达式求和
+3.括号匹配中的应用
+
 
 
 
