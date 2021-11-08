@@ -202,3 +202,49 @@ void insert_sort (int a[],int len) {
 }
 ```
 
+###### 2.快速排序
+&emsp;快速排序的思想是分而治之，将一个序列分为2个子序列然后递归排序2个子序列。
+1.选择一个基准值
+2.将小于基准值得移动到左边，大于基准值的移动到右边。
+3.递归排序子序列。将小于基准值的子序列和大于小于基准值的子序列递归排序。
+```
+void quick_sort(int arr[], int left, int right)
+{
+        int i,j,mid,tmp;
+        i=left;
+        j = right;
+        mid=arr[(i+j)/2];
+        while(i<=j) {
+            while (i<mid){
+                i++; // 找到第一个大于基准值的值
+            }
+            while (j>mid){
+                j--;// 找到第一个小于于基准值的值
+            }
+            if(i<=j) {
+	    // 交换
+                tmp = arr[j];
+                arr[j]=arr[i];
+                arr[i]=tmp;
+                i++;
+                j--;
+            }  
+        }
+        if(i<right){ // 递归子序列
+          quick_sort(arr,i,right);  
+        }
+        if(j>left){
+            quick_sort(arr,j,left);  
+        }
+}
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* sortArray(int* nums, int numsSize, int* returnSize){
+    quick_sort(nums, 0, numsSize-1);
+    *returnSize = numsSize;
+    return nums;
+}
+```
+
