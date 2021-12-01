@@ -158,31 +158,24 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
   冒泡排序：比较相邻的元素，如果第一个比第二个大，那么就交换，然后第在比较相邻的一对，重复。直到遍历到最后一对，那么最后一个就是最大的元素。
 在重复上面的步骤，遍历到倒数第2个元素。
 ```
-int i, j, temp;
-        for (i = 0; i < len - 1; i++)
-                for (j = 0; j < len - 1 - i; j++)
-                        if (arr[j] > arr[j + 1]) {
-                                temp = arr[j];
-                                arr[j] = arr[j + 1];
-                                arr[j + 1] = temp;
-                        }
-                        
-                        
- 优化
- int i ,j,temp;
-    for (i = 0; i < len - 1; i++) {
-        bool isSorted = true;
-        for (j = 0; j < len - 1 - i; j++)
-                if (arr[j] > arr[j + 1]) {
-                    isSorted = false;
-                        temp = arr[j];
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = temp;
-                }
-        if (isSorted == true) {
+ void bolb_sort(int a[], int n){
+    if (n<=1) return;
+    for (int i = 0;i<n;i++){
+        bool flag = false;// 提前退出冒泡排序的标志
+        for (int j = 0;j < n - i - 1;j++){
+            if(a[j]>a[j+1]) {
+                flag = true;
+                int tmp = a[j];
+                a[j]=a[j+1];
+                a[j+1]=tmp;
+            }
+        }
+        if(flag == false){
             break;
         }
+
     }
+}
 ```
 ###### 2.插入排序
   将第一排第一个序列元素看做有序序列，把第二个元素到最后一个元素看做未排序序列。从头到尾依次扫描未排序序列，将扫描到的元素依次插入到合适位置
