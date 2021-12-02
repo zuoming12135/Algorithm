@@ -180,22 +180,33 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
 ###### 2.插入排序
   将第一排第一个序列元素看做有序序列，把第二个元素到最后一个元素看做未排序序列。从头到尾依次扫描未排序序列，将扫描到的元素依次插入到合适位置
   ```
-void insert_sort (int a[],int len) {
-    int i ,j ,key ;
-    for (i = 1; i < len ; i ++) {
-    	key = a[i];
-    	j = i - 1;
-    	while (j >= 0 && a[j] > key) {
-    	a[j + 1] = a[j];
-    	j --;
-    	}
-    a[j + 1] = key;
+void inser_sort(int a[],int n) {
+    if (n<=1) return;
+    for (int i = 1;i <n ;i ++) {
+        int value = a[i]; // 未排序序列从第2个元素开始
+        int j = i - 1;
+        for (;j>=0;j--){
+            if(a[j]> value){
+                a[j+1]= a[j]; // 数据往后移动
+            } else {
+                break;
+            }
+        }
+        a[j+1]= value; // 插入数据
     }
-    
+
 }
 ```
+###### 3.选择排序
+&emsp;选择排序思路类似插入排序，也是分未排序区间和已排序区间。但是选择排序每次都会从未排序区间选择最小的元素，并将其放在已排序区间的末尾
+```
+void selected_sort(int a[],int n) {
+    if (n<=1) return;
+    
 
-###### 2.快速排序
+}
+```
+###### 4.快速排序
 &emsp;快速排序的思想是分而治之，将一个序列分为2个子序列然后递归排序2个子序列。
 1.选择一个基准值
 2.将小于基准值得移动到左边，大于基准值的移动到右边。
