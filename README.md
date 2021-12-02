@@ -199,11 +199,25 @@ void inser_sort(int a[],int n) {
 ```
 ###### 3.选择排序
 &emsp;选择排序思路类似插入排序，也是分未排序区间和已排序区间。但是选择排序每次都会从未排序区间选择最小的元素，并将其放在已排序区间的末尾
-```
-void selected_sort(int a[],int n) {
-    if (n<=1) return;
-    
 
+![image-20210804191853471](https://github.com/zuoming12135/Algorithm/blob/main/Snip20211202_2.png)
+
+```
+void selected_sort (int a[],int n){
+    if (n<=1) return;
+    for (int i = 0;i < n; i ++){
+        int min_index = i;
+        for (int j=i+1;j<n;j++){
+            if(a[j]<a[min_index]){ // 找出未排序序列中的最小值得下标
+                min_index = j;
+            }
+        }
+        if(i!=min_index){ // 将未排序的最小元素放在已排序区间的末尾
+            int tmp = a[i];
+            a[i]=a[min_index];
+            a[min_index]=tmp;
+        }
+    }
 }
 ```
 ###### 4.快速排序
